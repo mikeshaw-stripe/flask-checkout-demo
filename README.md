@@ -128,5 +128,5 @@ http://mikeshaw-stripe.github.io
 To run it 
 
 ```python
-python freezer.py
+python freeze.py
 ```
