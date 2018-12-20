@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://js.stripe.com/v3/"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="static/materialize.css" />
+  <!--<link rel="stylesheet" type="text/css" href="static/filmshop.css" />/-->
+</head>
+<body class="brown lighten-4">
+  <nav class="brown darken-1">
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo">&nbsp;Bean Box</a>
+    </div>
+  </nav>
+  <div class="container section s12 brown lighten-2 z-depth-4">
+      {% block content %}
+      {% endblock %}
+  </div>
+</body>
+<footer class="page-footer brown darken-1">
+  <div class="container">
+    This site uses a Test Stipe account. No real charges will occur
+    <a class="grey-text text-lighten-4 right" href="https://github.com/mandshaw/mandshaw.github.io">See on Github</a>
+  </div>
+</footer>
+</html>

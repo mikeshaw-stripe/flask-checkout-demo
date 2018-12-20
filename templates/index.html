@@ -1,0 +1,32 @@
+{# We use the 'base.html' template as a parent of this template to get the nav bar and footer on each page #}
+{% extends "base.html" %}
+{% block content %}
+{#
+    Need to loop through the plans and great a row with a card for each plan. In the card we create a button with a data attribute of the plan id.
+    We can use this data attribute in the javascript to pass to Stripe the plan that a user clicked on.
+#}
+{% for plan in plans %}
+<div class="row">
+    <div class="col s0 m2 l3 xl3"></div>
+    <div class="col s12 m8 l6 xl6">
+        <div class="card z-depth-4">
+            <div class="card-image">
+              <img class="responsive-img" src="static/bean-{{ plan['metadata']['type'] }}.jpg">
+            </div>
+            <div class="card-content">
+                <span class="card-title">{{ plan['nickname'] }}</span>
+                <p>{{ plan['metadata']['description'] }}</p>
+            </div>
+            <div class="center-align">
+                <div class="card-action">
+                    <a id="buy_{{ plan['metadata']['type'] }}" data-plan="{{ plan['id'] }}" class="waves-effect waves-light btn brown darken-1 z-depth-4" onclick="handleClick(this)">€{{ "{:.2f}".format(plan['amount']/100) }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col s0 m2 l3 xl3"></div>
+</div>
+{% endfor %}
+
+<script src="static/app.js"></script>
+{% endblock %}
