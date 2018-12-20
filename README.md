@@ -112,3 +112,21 @@ function handleClick(button) {
     });
 };
 ```
+
+## :star2: Bonus content! :star2:
+
+The Flask App in this demo is incredibly simple and really could be turned into Static content.
+
+Enter [Frozen Flask](https://pythonhosted.org/Frozen-Flask/).
+
+Frozen Flask will generate a static site into a _build_ folder that can then be hosted on a traditional web server.
+
+or github pages...
+
+http://mikeshaw-stripe.github.io
+
+To run it 
+
+```python
+python freezer.py
+```
