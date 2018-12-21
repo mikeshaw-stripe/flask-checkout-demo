@@ -98,8 +98,8 @@ function handleClick(button) {
     // Note that it is not guaranteed your customers will be redirected to this
     // URL *100%* of the time, it's possible that they could e.g. close the
     // tab between form submission and the redirect.
-    successUrl: `https://${window.location.hostname}/success`,
-    cancelUrl: `https://${window.location.hostname}`,
+    successUrl: `https://${window.location.hostname + (window.location.port? ":" + window.location.port : "")}/success`,
+    cancelUrl: `https://${window.location.hostname + (window.location.port? ":" + window.location.port : "")}`,
     })
     .then(function (result) {
       if (result.error) {

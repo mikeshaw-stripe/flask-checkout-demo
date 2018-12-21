@@ -16,7 +16,7 @@ cache = TTLCache(maxsize=10, ttl=1800)
 # Our default route when someone hits our domain name
 @app.route("/")
 def index():
-    return render_template('index.html', plans=get_plans())
+    return render_template('index.html', plans=get_plans(), stripe_public_key=stripe_public_key)
 
 # Route used to serve the success splash page when Stripe redirects back
 @app.route("/success")
