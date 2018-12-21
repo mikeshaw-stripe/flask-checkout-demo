@@ -6,6 +6,7 @@ app = Flask(__name__)
 
 # Get the Stripe Secret Key from an OS variable
 stripe.api_key = os.getenv('STRIPE_KEY')
+stripe_public_key = os.getenv('STRIPE_PUBLIC_KEY')
 
 # Create a TTLCache 'cache' to prevent spamming Stripe.
 # The cache has a TTL of 30 mins as Products are unlikey to change often.
@@ -45,3 +46,4 @@ def get_plans():
     plans = [plan for plan in stripe.Plan.list(product=product_id)]
 
     return plans
+

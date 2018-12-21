@@ -1,4 +1,4 @@
-var stripe = Stripe('pk_test_vM25HSU3TtQMcDTtAYQU1CuA', {
+var stripe = Stripe(stripePublicKey, {
   betas: ['checkout_beta_4']
 });
 

@@ -15,6 +15,7 @@ you can integrate once and remain compliant, secure and up to date as regulation
 ## Prerequisites
  - A Stripe Account
  - Set your Stripe Secret Key to an Environment variable *STRIPE_KEY*
+ - Set your Stripe Public Key to an Environment variable *STRIPE_PUBLIC_KEY*
  - Clone this repo
  - Use [pipenv](https://pipenv.readthedocs.io/en/latest/) to install all package dependencies
  
@@ -42,8 +43,6 @@ You should be able to see the Products you have added to your account
 ![alt text](./docs/images/products_example.png "Products")
 
 ## Running the app
-
-<strong>Make sure you have updated the Stripe Public Key in _static/app.js_</strong>
 
 As mentioned above this demo uses Flask as the backend for this web app. In order to start the web app you simply do
 
@@ -87,7 +86,7 @@ Note the _data-plan_ attribute on the _"buy_gold"_ button
 _handleClick_ js function in _static/app.js_
 
 ```js
-var stripe = Stripe(${YOUR_STRIPE_PUBLIC_KEY}, {
+var stripe = Stripe(stripePublicKey, {
   betas: ['checkout_beta_4']
 });
 

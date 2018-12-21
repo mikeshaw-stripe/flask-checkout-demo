@@ -1,0 +1,5 @@
+venv/
+PipFile
+.idea/
+.vscode/
+__pycache__
