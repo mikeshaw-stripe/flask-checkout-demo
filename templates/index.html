@@ -19,7 +19,7 @@
             </div>
             <div class="center-align">
                 <div class="card-action">
-                    <a id="buy_{{ plan['metadata']['type'] }}" data-plan="{{ plan['id'] }}" class="waves-effect waves-light btn brown darken-1 z-depth-4" onclick="handleClick(this)">€{{ "{:.2f}".format(plan['amount']/100) }}</a>
+                    <a id="buy_{{ plan['metadata']['type'] }}" data-plan="{{ plan['id'] }}" class="waves-effect waves-light btn brown darken-1 z-depth-4" href="/buy?plan_id={{ plan['id'] }}">€{{ "{:.2f}".format(plan['amount']/100) }}</a>
                 </div>
             </div>
         </div>

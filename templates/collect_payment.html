@@ -1,0 +1,14 @@
+{# We use the 'base.html' template as a parent of this template to get the nav bar and footer on each page #}
+{% extends "base.html" %}
+{% block content %}
+<div class="container center-align"><!-- Page Content goes here -->
+    <i class="material-icons brown-text text-lighten-5" style="font-size: 90px">card_membership</i>
+    <h3 class="brown-text text-lighten-5">Follow the Instructions on the Pin Pad</h3>
+</div>
+
+<script src="https://js.stripe.com/terminal/v1/sdk-b1.js"></script>
+<script>
+      const clientSecret = "{{ client_secret }}"
+</script>
+<script src="static/terminal.js"></script>
+{% endblock %}

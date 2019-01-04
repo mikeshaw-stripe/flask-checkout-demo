@@ -1,7 +1,9 @@
 import stripe
+from stripe.error import StripeError
 import os
+import json
 from cachetools import cached, TTLCache
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
 
 # Get the Stripe Secret Key from an OS variable
@@ -17,6 +19,7 @@ cache = TTLCache(maxsize=10, ttl=1800)
 @app.route("/")
 def index():
     return render_template('index.html', plans=get_plans(), stripe_public_key=stripe_public_key)
+
 
 # Route used to serve the success splash page when Stripe redirects back
 @app.route("/success")
@@ -47,3 +50,44 @@ def get_plans():
 
     return plans
 
+# Terminal  specific endpoints below
+
+# Get the terminal connection token
+@app.route('/terminal_connection_token', methods=['POST'])
+def terminal_connection_token():
+    token = stripe.terminal.ConnectionToken.create()
+    return jsonify(token)
+
+# Use the backend to create a PaymentIntent for processing
+@app.route("/buy")
+def buy():
+    # retrieve the Plan object
+    plan = stripe.Plan.retrieve(request.args.get('plan_id'))
+
+    # Create a payment intent using the plan amount and pass it's client secret to the front end
+    payment_intent = stripe.PaymentIntent.create(
+        amount = plan.amount,
+        currency = 'usd', # Hard code currency to USD as terminal not available in Europe yet
+        allowed_source_types = ['card_present'],
+        capture_method = 'manual'
+    )
+
+    return render_template('collect_payment.html', client_secret=payment_intent.client_secret)
+
+# Endpoint for capturing PaymentIntents
+@app.route("/capture/<payment_intent_id>")
+def capture(payment_intent_id):
+    try:
+        # Get the PaymentIntent from Stripe
+        payment_intent = stripe.PaymentIntent.retrieve(payment_intent_id)
+        # Capture the charge
+        payment_intent.capture()
+
+        # Return a success message
+        resp = jsonify(success=True)
+        resp.status_code = 200
+
+        return resp
+    except StripeError as se:
+        print('Error capturing the Payment intent from Stripe: {}'.format(se._message))
+        raise
