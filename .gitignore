@@ -3,3 +3,4 @@ PipFile
 .idea/
 .vscode/
 __pycache__
+*.sh
