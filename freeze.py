@@ -22,3 +22,5 @@ if __name__ == '__main__':
         os.path.join(os.getcwd(), 'build', 'success'),
         os.path.join(os.getcwd(), 'build', 'success.html')
     )
+
+    print("Flask App Successfully Frozen")
