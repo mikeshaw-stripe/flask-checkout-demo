@@ -33,6 +33,11 @@ Click "Enable Checkout"
 Checkout is now enabled for your account. As your account is new it is in test mode. You can ignore adding a Domain for now.
 
 ## Add Products to your Stripe account
+
+In this example we are going to use a subscription based billing model. In our docs you will see mentions of Products and SKU's.
+When you're using billing you are using Product and Plans. Which you can read more about [here](https://stripe.com/docs/billing/subscriptions/products-and-plans).
+
+ 
 You can add Products and Plans to your account via the Dashboard or via the API. Included in this Demo is a file _seed.py_ which demos programmatically adding some 
 products and plans to your account.
 
